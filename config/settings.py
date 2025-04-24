@@ -1,0 +1,2 @@
+MIN_DELAY = 1.5
+MAX_DELAY = 4.5

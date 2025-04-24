@@ -1,0 +1,11 @@
+[project]
+name = "amazon-product"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "meyigi-scripts>=1.14.0",
+    "playwright>=1.51.0",
+    "playwright-stealth>=1.0.6",
+]
