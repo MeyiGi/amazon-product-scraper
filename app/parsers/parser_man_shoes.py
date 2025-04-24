@@ -16,7 +16,6 @@ class ParserShoesForMen(ProductParserProtocol):
         ]
                 
         product_page_urls = [urljoin(BASE_URL, href) for href in hrefs]
-        print(product_page_urls)
 
         for product_url in product_page_urls:
             print(product_url)
@@ -32,6 +31,9 @@ class ParserShoesForMen(ProductParserProtocol):
         item["title"] = page.query_selector(get_selector(ShoesForManSelector, "TITLE")).text_content()
         item["price"] = page.query_selector(get_selector(ShoesForManSelector, "PRICE")).text_content()
         item["stars"] = page.query_selector(get_selector(ShoesForManSelector, "STARS")).text_content()
-        item["rating_count"] = page.query_selector(get_selector(ShoesForManSelector, "RATING_COUNT")).text_content()
-        item["details"] = [x.text_content for x in page.query_selector_all(get_selector(ShoesForManSelector, "DETAILS"))]
+        rating_count = page.query_selector(get_selector(ShoesForManSelector, "RATING_COUNT"))
+        if not rating_count:
+            rating_count = page.query_selector(get_selector(ShoesForManSelector, "SPARE_RATING_COUNT"))
+        item["rating_count"] = rating_count.text_content()
+        item["details"] = [x.text_content() for x in page.query_selector_all(get_selector(ShoesForManSelector, "DETAILS"))]
         return item
