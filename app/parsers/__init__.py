@@ -1,0 +1,1 @@
+from .parser_man_shoes import ParserShoesForMen

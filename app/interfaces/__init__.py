@@ -1,0 +1,2 @@
+from .browser_handler import BrowserHandlerProtocol
+from .product_parser import ProductParserProtocol

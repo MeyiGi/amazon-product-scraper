@@ -1,20 +1,19 @@
-from playwright.sync_api import sync_playwright, Page, Browser
-from playwright_stealth import stealth_sync
-from typing import Iterable
-from utils.randomizer import random_delay, random_proxy
-from config import MIN_DELAY, MAX_DELAY
+from app.browser_handler import BrowserHandlerForMenShoes
+from app.parsers.parser_man_shoes import ParserShoesForMen
+from app.interfaces import BrowserHandlerProtocol
 
-def start_playwright(proxies: Iterable[str] = None) -> tuple[Page, Browser]:
-    with sync_playwright() as p:
-        proxy = random_proxy(proxies)
+def main() -> None:
+    browser_handler: BrowserHandlerProtocol = BrowserHandlerForMenShoes()
+    page, browser = browser_handler.start_browser()
+    
+    shoes_parser = ParserShoesForMen()
+    shoes_parser.extract_products_info(page=page)
 
-        browser = p.chromium.launch(headless=False)
-        context = browser.new_context(
-            proxy={"server" : proxy} if proxy else None 
-        )
-        page = context.new_page()
-        stealth_sync(page)
 
-        random_delay(MIN_DELAY, MAX_DELAY)
+    # ----------------------------
+    browser_handler.close_browser
 
-        return page, browser
+
+
+if __name__ == "__main__":
+    main()
