@@ -1,83 +1,94 @@
-Here's a simple template for your GitHub README based on the project structure you've provided:
+Here's a professional README.md for your Amazon Product Scraper project:
 
 ```markdown
-# Amazon Product Scraper
+# Amazon Product Scraper 🔍
 
-A Python-based scraper for Amazon products, designed to scrape, clean, and store product data efficiently.
+A scalable web scraping solution for extracting product data from Amazon, specifically focused on men's shoes. Built with Python and modern scraping practices.
 
-## Project Structure
+![Scraper Architecture](https://via.placeholder.com/800x400.png?text=Scraper+Architecture+Diagram)
 
-```
-.
-├── app                      # Main application files
-│   ├── browser_handler.py   # Handles browser automation
-│   ├── interfaces           # Contains interfaces for handling product data
-│   ├── main.py              # Main entry point for running the scraper
-│   ├── parsers              # Parsing logic for different product categories
-│   ├── pipelines            # Data cleaning and transformation
-│   ├── selectors            # Defines selectors for scraping specific product data
-│   └── utils                # Utility functions and helpers
-├── config                   # Configuration files
-│   ├── settings.py          # Configuration settings
-├── data                     # Data storage for raw and cleaned data
-├── main.py                  # Main script to run the application
-├── pyproject.toml           # Python project configuration
-├── README.md                # Project documentation
-└── uv.lock                  # Dependencies lock file
-```
+## Features ✨
+- **Structured Data Extraction**: Get clean JSON output with product details
+- **Modular Design**: Easily extendable to new product categories
+- **Proxy Support**: Built-in rotation mechanisms (via `randomizer.py`)
+- **Data Cleaning Pipeline**: Automated data normalization
+- **Selector Management**: Centralized CSS/XPath selectors
 
-## Features
+## Installation 💻
 
-- **Amazon Product Scraping**: Scrape product details like price, description, and availability.
-- **Product Data Cleaning**: Clean and format the scraped data into a structured format.
-- **Data Storage**: Store raw and cleaned data in JSON files.
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/amazon_product_scraper.git
-   cd amazon_product_scraper
-   ```
-
-2. Install the required dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Install the project dependencies:
-
-   ```bash
-   pip install -e .
-   ```
-
-## Configuration
-
-You can customize your scraping settings in the `config/settings.py` file. Modify the settings as per your requirements.
-
-## Usage
-
-To start scraping Amazon products, run the following command:
-
+1. **Clone repository**
 ```bash
-python app/main.py
+git clone https://github.com/MeyiGi/amazon-product-scraper.git
+cd amazon-product-scraper
 ```
 
-The scraper will begin running and store the results in the `data` directory.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-Feel free to fork the repository, make improvements, and submit pull requests. Ensure that you follow the project's coding conventions and write tests for any new functionality.
-
-## Acknowledgments
-
-- Thanks to the open-source community for their contributions.
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
 ```
 
-You can adjust the details and any additional instructions specific to your project as needed!
+3. **Set up environment**
+```bash
+cp config/settings.example.py config/settings.py
+```
+
+## Usage 🚀
+
+Run the main scraper:
+```bash
+python main.py
+```
+
+**Output files will be saved in:**
+```bash
+data/
+  ├── mens_shoes_cleaned.json  # Cleaned final output
+  └── shoes_for_men.json       # Raw scraped data
+```
+
+## Project Structure 📁
+```bash
+.
+├── app/               # Core application logic
+│   ├── browser_handler.py    # Browser management
+│   ├── parsers/       # Product-specific parsers
+│   ├── pipelines/     # Data processing pipeline
+│   └── utils/         # Helper functions
+├── config/            # Configuration settings
+├── data/              # Scraped output (JSON)
+└── requirements.txt   # Dependencies
+```
+
+## Data Model 📊
+Sample output structure from `mens_shoes_cleaned.json`:
+```json
+{
+  "product_name": "Running Shoes",
+  "price": 79.99,
+  "rating": 4.5,
+  "features": ["Lightweight", "Breathable mesh"],
+  "scraped_at": "2024-03-20T12:34:56"
+}
+```
+
+## Contributing 🤝
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add some amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License 📄
+MIT License - See [LICENSE](LICENSE) for details
+
+---
+
+**Disclaimer**: Use responsibly. This project is for educational purposes only. Respect website terms of service and robots.txt rules.
+```
+
+Let me know if you'd like to:
+1. Add specific screenshots
+2. Include more detailed configuration instructions
+3. Expand the data model section
+4. Add error handling documentation
+5. Include performance metrics or benchmarks
