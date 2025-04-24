@@ -73,4 +73,4 @@ if __name__ == "__main__":
 
     cleaner = ProductDataCleaner()
     cleaned_data = cleaner.clean_data(raw_data)
-    append_to_json(cleaned_data, f"data/mens_shoes_cleaned.json")
+    append_to_json(cleaned_data, OUTPUT_FOLDER["cleaned-mens-shoes"])

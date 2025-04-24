@@ -5,5 +5,6 @@ SCRAPE_URLS = {
     "mens-shoes" : "https://www.amazon.com/s?i=fashion-mens-shoes&s=popularity-rank&page=1"
 }
 OUTPUT_FOLDER = {
-    "mens-shoes" : "data/shoes_for_men.json" 
+    "mens-shoes" : "data/shoes_for_men.json",
+    "cleaned-mens-shoes" : "data/cleaned_shoes_for_men.json",
 }
