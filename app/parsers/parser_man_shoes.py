@@ -19,6 +19,7 @@ class ParserShoesForMen(ProductParserProtocol):
         print(product_page_urls)
 
         for product_url in product_page_urls:
+            print(product_url)
             page.goto(product_url)
             item = self.extract_product_detail(page)
             append_to_json(item, OUTPUT_FOLDER["mens-shoes"])
@@ -27,5 +28,10 @@ class ParserShoesForMen(ProductParserProtocol):
         return products
     
     def extract_product_detail(self, page):
-        return super().extract_product_detail(page)
-    
+        item = {}
+        item["title"] = page.query_selector(get_selector(ShoesForManSelector, "TITLE")).text_content()
+        item["price"] = page.query_selector(get_selector(ShoesForManSelector, "PRICE")).text_content()
+        item["stars"] = page.query_selector(get_selector(ShoesForManSelector, "STARS")).text_content()
+        item["rating_count"] = page.query_selector(get_selector(ShoesForManSelector, "RATING_COUNT")).text_content()
+        item["details"] = [x.text_content for x in page.query_selector_all(get_selector(ShoesForManSelector, "DETAILS"))]
+        return item
