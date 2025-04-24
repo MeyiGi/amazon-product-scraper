@@ -27,16 +27,11 @@ cd amazon-product-scraper
 pip install -r requirements.txt
 ```
 
-3. **Set up environment**
-```bash
-cp config/settings.example.py config/settings.py
-```
-
 ## Usage 🚀
 
 Run the main scraper:
 ```bash
-python main.py
+python3 -m app.main
 ```
 
 **Output files will be saved in:**
@@ -63,11 +58,16 @@ data/
 Sample output structure from `mens_shoes_cleaned.json`:
 ```json
 {
-  "product_name": "Running Shoes",
-  "price": 79.99,
-  "rating": 4.5,
-  "features": ["Lightweight", "Breathable mesh"],
-  "scraped_at": "2024-03-20T12:34:56"
+  "title": "Hey Dude Men's Wally Stretch | Men's Loafers | Comfortable & Light-Weight",
+  "price": 39.99,
+  "stars": 4.8,
+  "rating_count": 59172,
+  "details": [
+    "Fabric type Fabric",
+    "Origin Made in the USA",
+    "Sole material Leather",
+    "Outer material Fabric"
+  ]
 }
 ```
 
